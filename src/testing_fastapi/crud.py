@@ -1,4 +1,6 @@
 def get_item(collection, key):
+    if key not in collection:
+        raise KeyError("Item does not exist")
     return collection[key]
 
 

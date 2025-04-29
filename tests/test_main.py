@@ -24,3 +24,15 @@ def test_create_item_already_exists():
     response = client.post("/items/foo", json=new_item)
     assert response.status_code == 400
     assert response.json() == {"detail": "Item already exists"}
+
+
+def test_login_with_correct_password():
+    response = client.post("/login?username=user1&password=1234")
+    assert response.status_code == 200
+    assert response.json()["username"] == "user1"
+
+
+def test_login_with_wrong_password():
+    response = client.post("/login?username=user1&password=123")
+    assert response.status_code == 401
+    assert response.json() == {"detail": "username or password is incorrect"}

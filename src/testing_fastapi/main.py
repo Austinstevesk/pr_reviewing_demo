@@ -25,7 +25,7 @@ async def create_item(item_id: str, item: dict):
 
 @app.get(
     "/list-of-users",
-    status_code=status.HTTP_201_CREATED,
+    status_code=status.HTTP_200_OK,
     response_model=List[dict],
     description="Get a list of user data that we have on the database",
 )
@@ -40,6 +40,11 @@ async def get_a_list_of_users():
     description="Login user"
 )
 async def login_user(username: str, password: str):
+    if password != "1234":
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="username or password is incorrect"
+        )
     return {
         "username": username,
         "lastlogin": datetime.utcnow(),    
