@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import List
 
 from fastapi import FastAPI, HTTPException, status
@@ -30,3 +31,18 @@ async def create_item(item_id: str, item: dict):
 )
 async def get_a_list_of_users():
     return [{"username": "random user_username", "data": ["user data here"]}]
+
+
+
+@app.post(
+    "/login",
+    response_model=dict,
+    description="Login user"
+)
+async def login_user(username: str, password: str):
+    return {
+        "username": username,
+        "lastlogin": datetime.utcnow(),    
+    }
+
+
