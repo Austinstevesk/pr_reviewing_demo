@@ -1,0 +1,22 @@
+[project]
+name = "testing_fastapi"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Austinstevesk", email = "austinstevesk@gmail.com"},
+]
+dependencies = [
+    "fastapi>=0.115.12",
+    "pytest>=8.3.5",
+    "httpx>=0.28.1",
+    "flake8>=7.2.0",
+    "black>=25.1.0",
+    "isort>=6.0.1",
+]
+requires-python = "==3.10.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
