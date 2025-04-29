@@ -1,5 +1,5 @@
-from typing import List
 from datetime import datetime
+from typing import List
 
 from fastapi import FastAPI, HTTPException, status
 
@@ -40,12 +40,9 @@ async def get_a_list_of_users():
     description="Login user"
 )
 async def login_user(username: str, password: str):
-    API_KEY = "Random API Key"
-    print(API_KEY)
-    print(username)
     return {
         "username": username,
-        "lastlogin": datetime.utcnow(),
+        "lastlogin": datetime.utcnow(),    
     }
 
 
